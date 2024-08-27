@@ -1,0 +1,38 @@
+<% layout('layouts/boilerplate') %>.
+<h1>All Sights</h1>
+<div>
+  <!-- <a href="/campgrounds/new">Add a New campground</a> -->
+  <a
+    href="/campgrounds/new"
+    class="btn btn-lg btn-primary font-weight-bold border-white bg-black mb-3"
+    >Add New Sight</a
+  >
+</div>
+<% for(let campground of campgrounds){%>
+<div class="card mb-3">
+  <div class="row">
+    <div class="col-md-4">
+      <!-- <img class="img-fluid" alt="" src="<%=campground.images[0].url%>"> -->
+      <% if (campground.images && campground.images.length > 0) { %>
+      <img class="img-fluid" alt="" src="<%=campground.images[0].url%>" />
+      <!-- <img class="img-fluid" src="https://images.unsplash.com/photo-1571863533956-01c88e79957e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80" alt=""> -->
+      <% } else { %>
+      <img class="img-fluid" alt="" src="https://via.placeholder.com/150" />
+      <% } %>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><%=campground.title %></h5>
+        <p class="card-text"><%= campground.description %></p>
+        <p class="card-text">
+          <small class="text-muted"><%=campground.location %></small>
+        </p>
+        <a class="btn btn-primary" href="/campgrounds/<%=campground._id%>"
+          >View <%=campground.title%></a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <h3><%=campground._id%></h3> -->
+<%}%>
